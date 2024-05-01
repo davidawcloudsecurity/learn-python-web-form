@@ -9,4 +9,6 @@ https://www.lambdatest.com/blog/how-to-automate-filling-in-web-forms-with-python
 
 Run docker
 
+https://nander.cc/using-selenium-within-a-docker-container
+
 https://stackoverflow.com/questions/45323271/how-to-run-selenium-with-chrome-in-docker
