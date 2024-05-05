@@ -1,6 +1,13 @@
 # learn-python-web-form
 how to fill web form with python
 
+## Run Selenium with docker
+```ruby
+pip install selenium
+
+docker run -d -p 4444:4444 -p 7900:7900 --shm-size="2g" selenium/standalone-chrome:latest
+```
+
 # Start here
 ```ruby
 Using xpath
