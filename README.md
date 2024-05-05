@@ -1,6 +1,14 @@
 # learn-python-web-form
 how to fill web form with python
 
+# Start here
+```ruby
+Using xpath
+https://www.youtube.com/watch?v=B5X2nyA8RlU
+
+Using name/id
+https://www.youtube.com/watch?v=doPo9q6on6c
+```
 https://github.com/swhasans/Auto-Fill
 
 https://softwaresennin.medium.com/never-fill-out-another-boring-online-form-use-python-to-make-it-automatic-e84afa6b066a
