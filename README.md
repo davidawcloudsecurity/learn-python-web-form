@@ -7,6 +7,8 @@ find_element_by_id(‘id’)         find_element(By.ID, ‘id’)
 find_element_by_name(‘name’)     find_element(By.NAME, ‘name’)
 find_element_by_xpath(‘xpath’)	 find_element(By.XPATH, ‘xpath’)
 ```
+https://www.lambdatest.com/blog/selenium-click-button-with-examples/
+
 https://uilicious.com/blog/how-to-click-a-button-using-selenium/
 ## Run Selenium with docker
 ```ruby
