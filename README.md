@@ -1,6 +1,13 @@
 # learn-python-web-form
 how to fill web form with python
 
+```ruby
+Old API                          New API
+find_element_by_id(‘id’)         find_element(By.ID, ‘id’)
+find_element_by_name(‘name’)     find_element(By.NAME, ‘name’)
+find_element_by_xpath(‘xpath’)	 find_element(By.XPATH, ‘xpath’)
+```
+
 ## Run Selenium with docker
 ```ruby
 pip install selenium
