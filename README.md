@@ -12,6 +12,10 @@ https://www.youtube.com/watch?v=doPo9q6on6c
 dockerise python with selenium
 https://www.youtube.com/watch?v=xrYDlx8evR0
 https://blog.devgenius.io/docker-python-selenium-the-quickest-way-to-start-web-scraping-6c47248c69c3
+
+how to use it on nodejs
+https://stackoverflow.com/questions/54352702/selenium-find-element-via-data-qa-attribute
+https://www.geeksforgeeks.org/get_attribute-element-method-selenium-python/
 ```
 https://github.com/swhasans/Auto-Fill
 
