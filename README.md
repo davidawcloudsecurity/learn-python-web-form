@@ -8,6 +8,9 @@ https://www.youtube.com/watch?v=B5X2nyA8RlU
 
 Using name/id
 https://www.youtube.com/watch?v=doPo9q6on6c
+
+dockerise python with selenium
+https://www.youtube.com/watch?v=xrYDlx8evR0
 ```
 https://github.com/swhasans/Auto-Fill
 
