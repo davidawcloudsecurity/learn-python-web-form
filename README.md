@@ -52,6 +52,9 @@ browser.quit()
 ```
 # Start here
 ```ruby
+How to
+https://softwaresennin.medium.com/never-fill-out-another-boring-online-form-use-python-to-make-it-automatic-e84afa6b066a
+
 Using xpath
 https://www.youtube.com/watch?v=B5X2nyA8RlU
 
