@@ -11,7 +11,7 @@ chrome_options.add_argument("--window-size=1920x1080")
 
 # Path to chromedriver executable
 
-# Initialize the Chrome browser with the specified options
+# Initialize the Chrome browser with the specified options. Run selenium from docker chrome
 browser = webdriver.Remote("http://localhost:4444", options=webdriver.ChromeOptions())
 
 # Navigate to Facebook login page
