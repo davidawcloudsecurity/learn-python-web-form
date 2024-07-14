@@ -7,7 +7,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import NoSuchElementException, TimeoutException
 import time
 
-# Added user manual, API, help mailbox, git cred
+## added up to library
 # Function to read credentials from file
 def read_credentials(filename):
     credentials = {}
@@ -86,7 +86,7 @@ try:
     print("Sign in button clicked.")
 
     # Wait for the div element to be visible
-    display_sign_element = WebDriverWait(browser, 10).until(
+    display_sign_element = WebDriverWait(browser, 60).until(
         EC.visibility_of_element_located((By.CSS_SELECTOR, "div.displaySign"))
     )
 
@@ -101,7 +101,7 @@ try:
     print("Genexis console:", browser.title)
 
     # Wait for at the profile to be clickable
-    button = WebDriverWait(browser, 10).until(
+    button = WebDriverWait(browser, 60).until(
         EC.element_to_be_clickable((By.CSS_SELECTOR, "button[qa-id='user-menu']"))
     )    
 
@@ -109,7 +109,7 @@ try:
     button.click()
 
     # Wait for the button to be clickable
-    button = WebDriverWait(browser, 10).until(
+    button = WebDriverWait(browser, 60).until(
         EC.element_to_be_clickable((By.CSS_SELECTOR, "button[qa-id='menu-item-help']"))
     )
 
@@ -187,7 +187,7 @@ try:
 
     # Git Cred
     # Wait for at the profile to be clickable
-    button = WebDriverWait(browser, 10).until(
+    button = WebDriverWait(browser, 60).until(
         EC.element_to_be_clickable((By.CSS_SELECTOR, "button[qa-id='user-menu']"))
     )    
 
@@ -195,7 +195,7 @@ try:
     button.click()
 
     # Wait for the button to be clickable
-    button = WebDriverWait(browser, 10).until(
+    button = WebDriverWait(browser, 60).until(
         EC.element_to_be_clickable((By.XPATH, "//button[contains(., 'My Profile')]"))
     )
 
@@ -205,7 +205,7 @@ try:
     print("My Profile Page:", browser.title)
 
     # Wait for the button to be clickable
-    button = WebDriverWait(browser, 10).until(
+    button = WebDriverWait(browser, 60).until(
         EC.element_to_be_clickable((By.XPATH, "//button[contains(., 'Download password credentials')]"))
     )
 
@@ -213,7 +213,80 @@ try:
     button.click()
     print("Clicked on the 'Download password credentials' button.")
 
-#    prioritize_button = WebDriverWait(browser, 10).until(
+    # Start om bookmark
+    # Wait for the button to be clickable
+    button = WebDriverWait(browser, 60).until(
+        EC.element_to_be_clickable((By.CSS_SELECTOR, "a[qa-id='menu-Resources']"))
+    )
+
+    # Click the button
+    button.click()
+    print("Clicked on the 'Resources' button.")
+
+    # Wait for the button to be clickable
+    button11 = WebDriverWait(browser, 60).until(
+        EC.element_to_be_clickable((By.XPATH, "//button[contains(., 'Library')]"))
+    )
+
+    # Click the button
+    button11.click()
+    print("Clicked on the 'Library menu' button.")
+
+    # Wait for the button to be clickable
+    button12 = WebDriverWait(browser, 60).until(
+            EC.element_to_be_clickable((By.XPATH, "//button[contains(text(), '0')]"))
+    )
+
+    print(button12.text)
+
+    # Check if the button text contains '0'
+    if '0' in button12.text:
+        button12.click()
+        print("Clicked on the 'Library bookmark' button.")
+    else:
+        print("The button with text '0' was not found or doesn't contain '0'. No action taken.")    
+
+    # Wait for the button to be clickable
+    button22 = WebDriverWait(browser, 60).until(
+        EC.element_to_be_clickable((By.XPATH, "//button[contains(., 'Datasets')]"))
+    )
+
+    # Click the button
+    button22.click()
+    print("Clicked on the 'Datasets menu' button.")
+
+    # Wait for the button to be clickable    
+    button23 = WebDriverWait(browser, 60).until(       
+        EC.element_to_be_clickable((By.XPATH, "//button[@qa-id='btn-subscribe-card-test-itl7k-j2jsf']"))
+    )
+
+    # Check if the button text contains '0'
+    if '0' in button23.text:
+        button23.click()
+        print("Clicked on the 'Datasets bookmark' button.")
+    else:
+        print("The button with text '0' was not found or doesn't contain '0'. No action taken.")    
+
+    
+    # Wait for at the profile to be clickable
+    button = WebDriverWait(browser, 60).until(
+        EC.element_to_be_clickable((By.CSS_SELECTOR, "button[qa-id='user-menu']"))
+    )    
+
+    # Click the button
+    button.click()
+
+    # Wait for the button to be clickable
+    button = WebDriverWait(browser, 60).until(
+        EC.element_to_be_clickable((By.XPATH, "//button[contains(., 'My Bookmarks')]"))
+    )
+
+    # Click the button
+    button.click()
+    print("Clicked on the 'My Bookmarks' button.")
+    print("My Bookmarka Page:", browser.title)
+    
+#    prioritize_button = WebDriverWait(browser, 60).until(
 #        EC.element_to_be_clickable((By.CSS_SELECTOR, "button[qa-id='project-d3382591-c70c-47af-887e-a47ce87f2bf3-prioritize-btn']"))
 #    )
     
