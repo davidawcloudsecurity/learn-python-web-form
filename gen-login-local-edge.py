@@ -1,5 +1,4 @@
 from selenium import webdriver
-import requests
 from selenium.webdriver.edge.service import Service
 from selenium.webdriver.edge.options import Options
 from selenium.webdriver.common.by import By
@@ -85,6 +84,15 @@ try:
     submit_button = browser.find_element(By.XPATH, "//input[@id='idSIButton9']")
     submit_button.click()
     print("Sign in button clicked.")
+
+    # Wait for the div element to be visible
+    display_sign_element = WebDriverWait(browser, 10).until(
+        EC.visibility_of_element_located((By.CSS_SELECTOR, "div.displaySign"))
+    )
+
+    # Get the text content of the div
+    display_sign_text = display_sign_element.text
+    print("Text in displaySign div:", display_sign_text)
       
     # Wait up to 10 seconds for the element to be clickable
     element = WebDriverWait(browser, 60).until(
@@ -105,12 +113,12 @@ try:
     search_field.send_keys(project_name)
     print(f"Typed '{project_name}' into the search field.")
 
-    # Wait for the link to be clickable
+    # Dynamically locate the element based on the keyword
     link = WebDriverWait(browser, 60).until(
-        EC.element_to_be_clickable((By.CSS_SELECTOR, "a[qa-id='txt-title-project-tps-uat']"))
+        EC.element_to_be_clickable((By.CSS_SELECTOR, f"a[qa-id*='{project_name}']"))
     )
     link.click()
-    print("Clicked on the 'tps-uat' project link.")
+    print(f"Clicked on the '{project_name}' project link.")
 
     # Wait for the button to be clickable
     button = WebDriverWait(browser, 60).until(
