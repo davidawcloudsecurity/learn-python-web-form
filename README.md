@@ -86,3 +86,11 @@ https://stackoverflow.com/questions/45323271/how-to-run-selenium-with-chrome-in-
 https://ahsonshaikh616.medium.com/streamlined-selenium-grid-setup-running-selenium-code-with-selenium-standalone-chrome-docker-image-c3355bc850e4
 
 https://gpt.com/share/77c7a5e2-7a0a-45a3-a4ea-e026d7a22fc6
+
+Create file
+```bash
+username=<username>
+password=<password>
+website=<url>
+project_name=<name>
+```
