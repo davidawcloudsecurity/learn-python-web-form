@@ -1,4 +1,5 @@
 from selenium import webdriver
+import requests
 from selenium.webdriver.edge.service import Service
 from selenium.webdriver.edge.options import Options
 from selenium.webdriver.common.by import By
@@ -28,6 +29,7 @@ credentials = read_credentials('cred.txt')
 username = credentials.get('username')
 password = credentials.get('password')
 website = credentials.get('website')
+project_name = credentials.get('project_name')
 
 # Set Edge options to run headless
 edge_options = Options()
@@ -48,7 +50,7 @@ browser.get(website)
 
 try:
     # Wait for the username input field to be present and visible
-    username_field = WebDriverWait(browser, 20).until(
+    username_field = WebDriverWait(browser, 60).until(
         EC.visibility_of_element_located((By.ID, "i0116"))
     )
     print("Enter username:", browser.title)
@@ -70,7 +72,7 @@ try:
     print("Enter password:", browser.title)
 
     # Assuming there is a password field (update the selector to match the password field's attributes)
-    password_field = WebDriverWait(browser, 20).until(
+    password_field = WebDriverWait(browser, 60).until(
         EC.visibility_of_element_located((By.ID, "i0118"))  # Update the ID to match the actual password field ID
     )
 
@@ -85,7 +87,7 @@ try:
     print("Sign in button clicked.")
       
     # Wait up to 10 seconds for the element to be clickable
-    element = WebDriverWait(browser, 20).until(
+    element = WebDriverWait(browser, 60).until(
         EC.element_to_be_clickable((By.XPATH, "//a[@qa-id='menu-Projects']"))    
     )
     print("Genexis console:", browser.title)
@@ -95,31 +97,56 @@ try:
     print("Clicked on 'Projects' link.")
 
     # Find the search input field using its qa-id attribute
-    search_field = WebDriverWait(browser, 10).until(
+    search_field = WebDriverWait(browser, 60).until(
         EC.visibility_of_element_located((By.CSS_SELECTOR, "input[qa-id='search-project']"))
     )
     # Clear any existing text (optional)
-    search_field.clear()
-    
-    # Enter the desired search string
-    search_field.send_keys("tps")
-    print("Typed 'tps' into the search field.")
+    search_field.clear()   
+    search_field.send_keys(project_name)
+    print(f"Typed '{project_name}' into the search field.")
 
     # Wait for the link to be clickable
-    link = WebDriverWait(browser, 10).until(
+    link = WebDriverWait(browser, 60).until(
         EC.element_to_be_clickable((By.CSS_SELECTOR, "a[qa-id='txt-title-project-tps-uat']"))
     )
     link.click()
     print("Clicked on the 'tps-uat' project link.")
 
     # Wait for the button to be clickable
-    button = WebDriverWait(browser, 10).until(
+    button = WebDriverWait(browser, 60).until(
         EC.element_to_be_clickable((By.CSS_SELECTOR, "button.chakra-button.css-1rwzulq[qa-id='btn-go-to-project']"))
     )
+
+    # Get the URL that the element points to
+    url = element.get_attribute("href") or element.get_attribute("action")  # Assuming it's a link
+    
     # Click the button
     button.click()
-    print("Clicked on the 'Go to Internet Facing Project' button.")    
-        
+    print("Clicked on the 'Go to Internet Facing Project' button.")
+
+    # Get the current window handle (before clicking)
+    current_window_handle = browser.current_window_handle
+
+    # Wait for the new window or tab to open
+    WebDriverWait(browser, 60).until(EC.new_window_is_opened)
+
+    # Switch to the new window
+    new_window_handle = [handle for handle in browser.window_handles if handle != current_window_handle][0]
+    browser.switch_to.window(new_window_handle)
+
+    # Get the URL of the new window/tab
+    time.sleep(10)
+    new_window_url = browser.current_url
+    print(f"URL of the new window/tab: {new_window_url}")
+    print(f"URL of the new window/tab: {url}")
+
+    # Unit Test 1
+    # Assert if the URL contains expected pattern
+    if project_name in browser.current_url:
+        print("Project can be accessed successfully!")
+    else:
+        print("Project cannot be accessed.")
+    
 #    prioritize_button = WebDriverWait(browser, 10).until(
 #        EC.element_to_be_clickable((By.CSS_SELECTOR, "button[qa-id='project-d3382591-c70c-47af-887e-a47ce87f2bf3-prioritize-btn']"))
 #    )
