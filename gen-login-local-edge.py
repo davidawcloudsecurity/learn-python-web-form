@@ -103,7 +103,21 @@ try:
     
     # Enter the desired search string
     search_field.send_keys("tps")
-    print("Typed 'tps' into the search field.")    
+    print("Typed 'tps' into the search field.")
+
+    # Wait for the link to be clickable
+    link = WebDriverWait(browser, 10).until(
+        EC.element_to_be_clickable((By.CSS_SELECTOR, "a[qa-id='txt-title-project-tps-uat']"))
+    )
+    link.click()
+    print("Clicked on the 'tps-uat' project link.")
+        
+#    prioritize_button = WebDriverWait(browser, 10).until(
+#        EC.element_to_be_clickable((By.CSS_SELECTOR, "button[qa-id='project-d3382591-c70c-47af-887e-a47ce87f2bf3-prioritize-btn']"))
+#    )
+    
+#    prioritize_button.click()
+#    print("Clicked on the 'Pin' button.")    
 
 except (NoSuchElementException, TimeoutException) as e:
     print(f"An element was not found or the operation timed out: {e}")
