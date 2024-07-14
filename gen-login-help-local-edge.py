@@ -7,7 +7,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import NoSuchElementException, TimeoutException
 import time
 
-# Click API, user, help
+# Added user manual, API, help mailbox, git cred
 # Function to read credentials from file
 def read_credentials(filename):
     credentials = {}
@@ -183,7 +183,35 @@ try:
     print(f"Clicked on the: 1.1.1 Log in to GeneXis")
     
     # Click the button
-    button.click()    
+    button.click()
+
+    # Git Cred
+    # Wait for at the profile to be clickable
+    button = WebDriverWait(browser, 10).until(
+        EC.element_to_be_clickable((By.CSS_SELECTOR, "button[qa-id='user-menu']"))
+    )    
+
+    # Click the button
+    button.click()
+
+    # Wait for the button to be clickable
+    button = WebDriverWait(browser, 10).until(
+        EC.element_to_be_clickable((By.XPATH, "//button[contains(., 'My Profile')]"))
+    )
+
+    # Click the button
+    button.click()
+    print("Clicked on the 'My Profile' button.")
+    print("My Profile Page:", browser.title)
+
+    # Wait for the button to be clickable
+    button = WebDriverWait(browser, 10).until(
+        EC.element_to_be_clickable((By.XPATH, "//button[contains(., 'Download password credentials')]"))
+    )
+
+    # Click the button
+    button.click()
+    print("Clicked on the 'Download password credentials' button.")
 
 #    prioritize_button = WebDriverWait(browser, 10).until(
 #        EC.element_to_be_clickable((By.CSS_SELECTOR, "button[qa-id='project-d3382591-c70c-47af-887e-a47ce87f2bf3-prioritize-btn']"))
