@@ -7,7 +7,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import NoSuchElementException, TimeoutException
 import time
 
-# This containers api docs, help centre then user name.
+# Click API, user, help
 # Function to read credentials from file
 def read_credentials(filename):
     credentials = {}
