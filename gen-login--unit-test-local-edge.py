@@ -16,7 +16,7 @@ class TestWebPage(unittest.TestCase):
         # edge_options.add_argument("--window-size=1920x1080")
 
         # Path to msedgedriver executable
-        edgedriver_path = r'C:\Users\admin\Downloads\learn-python-web-form\edgedriver_win64\msedgedriver.exe'
+        edgedriver_path = r'.\edgedriver_win64\msedgedriver.exe'
 
         # Initialize the EdgeDriver service
         service = Service(executable_path=edgedriver_path)
