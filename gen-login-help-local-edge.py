@@ -7,6 +7,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import NoSuchElementException, TimeoutException
 import time
 
+# This containers api docs, help centre then user name.
 # Function to read credentials from file
 def read_credentials(filename):
     credentials = {}
@@ -116,12 +117,60 @@ try:
     button.click()
     print("Clicked on the 'Self-Help' button.")
     print("Self-Help Page:", browser.title)
-    
-    # Wait for getting started to be clickable
-    button = WebDriverWait(browser, 10).until(
-        EC.element_to_be_clickable((By.CSS_SELECTOR, "button.chakra-accordion__button.css-uttm9k"))
-    )    
 
+    # Wait for the button to be clickable
+    button = WebDriverWait(browser, 20).until(
+        EC.element_to_be_clickable((By.CSS_SELECTOR, "button[qa-id='btn-tab-API Docs']"))
+    )
+
+    # Print the text to the terminal
+    print("Clicked on the 'API Docs' button.")
+    
+    # Click the button
+    button.click()
+
+        # Wait for the button to be clickable
+    button = WebDriverWait(browser, 20).until(
+        EC.element_to_be_clickable((By.XPATH, "//button[contains(@aria-label, '/profile')]"))
+    )
+
+    # Print the text to the terminal
+    print("Clicked on the 'Get /profile' button.")
+    
+    # Click the button
+    button.click()
+
+    # Wait for the button to be clickable
+    button = WebDriverWait(browser, 20).until(
+        EC.element_to_be_clickable((By.XPATH, "//button[contains(., 'Help Centre')]"))
+    )
+    
+    # Click the button
+    button.click()
+
+    # Wait for the SVG/mail icon element to be clickable (assuming you are targeting the entire SVG)
+    svg_element = WebDriverWait(browser, 20).until(
+        EC.element_to_be_clickable((By.CSS_SELECTOR, "svg.chakra-icon.css-n17ngm"))
+    )
+
+    # Click the SVG element
+    svg_element.click()
+    print("Clicked on the SVG element.")    
+
+
+    # Wait for the button to be clickable based on qa-id attribute
+    button = WebDriverWait(browser, 20).until(
+        EC.element_to_be_clickable((By.XPATH, "//button[@qa-id='btn-tab-User Manual']"))
+    )
+
+    # Click the button
+    button.click()    
+
+    # Wait for the button to be clickable
+    button = WebDriverWait(browser, 20).until(
+        EC.element_to_be_clickable((By.XPATH, "//button[contains(., 'Getting Started')]"))
+    )
+    
     # Click the button
     button.click()
 
@@ -134,8 +183,7 @@ try:
     print(f"Clicked on the: 1.1.1 Log in to GeneXis")
     
     # Click the button
-    button.click()
-
+    button.click()    
 
 #    prioritize_button = WebDriverWait(browser, 10).until(
 #        EC.element_to_be_clickable((By.CSS_SELECTOR, "button[qa-id='project-d3382591-c70c-47af-887e-a47ce87f2bf3-prioritize-btn']"))
