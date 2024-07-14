@@ -84,3 +84,5 @@ https://nander.cc/using-selenium-within-a-docker-container
 https://stackoverflow.com/questions/45323271/how-to-run-selenium-with-chrome-in-docker
 
 https://ahsonshaikh616.medium.com/streamlined-selenium-grid-setup-running-selenium-code-with-selenium-standalone-chrome-docker-image-c3355bc850e4
+
+https://gpt.com/share/77c7a5e2-7a0a-45a3-a4ea-e026d7a22fc6
