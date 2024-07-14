@@ -51,6 +51,7 @@ try:
     username_field = WebDriverWait(browser, 20).until(
         EC.visibility_of_element_located((By.ID, "i0116"))
     )
+    print("Enter username:", browser.title)
 
     # Ensure the field is interactable
     if username_field.is_displayed() and username_field.is_enabled():
@@ -66,7 +67,7 @@ try:
 
     # Wait for a few seconds to let the page load
     time.sleep(5)
-    print("Page Title:", browser.title)
+    print("Enter password:", browser.title)
 
     # Assuming there is a password field (update the selector to match the password field's attributes)
     password_field = WebDriverWait(browser, 20).until(
@@ -82,15 +83,28 @@ try:
     submit_button = browser.find_element(By.XPATH, "//input[@id='idSIButton9']")
     submit_button.click()
     print("Sign in button clicked.")
-        
-    # Wait for the h2 element to be present and visible
-    welcome_message_element = WebDriverWait(browser, 20).until(
-        EC.visibility_of_element_located((By.CLASS_NAME, "chakra-heading css-1m1d22u"))
+      
+    # Wait up to 10 seconds for the element to be clickable
+    element = WebDriverWait(browser, 20).until(
+        EC.element_to_be_clickable((By.XPATH, "//a[@qa-id='menu-Projects']"))    
     )
+    print("Genexis console:", browser.title)
+    # Once found, click on the element
+    submit_button = browser.find_element(By.XPATH, "//a[@qa-id='menu-Projects']")
+    submit_button.click()
+    print("Clicked on 'Projects' link.")
 
-    # Print the text of the h2 element
-    print("Test")
-    print(welcome_message_element.text)
+    # Find the search input field using its qa-id attribute
+    search_field = WebDriverWait(browser, 10).until(
+        EC.visibility_of_element_located((By.CSS_SELECTOR, "input[qa-id='search-project']"))
+    )
+    # Clear any existing text (optional)
+    search_field.clear()
+    
+    # Enter the desired search string
+    search_field.send_keys("tps")
+    print("Typed 'tps' into the search field.")    
+
 except (NoSuchElementException, TimeoutException) as e:
     print(f"An element was not found or the operation timed out: {e}")
 
