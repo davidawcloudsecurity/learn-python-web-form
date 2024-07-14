@@ -111,6 +111,14 @@ try:
     )
     link.click()
     print("Clicked on the 'tps-uat' project link.")
+
+    # Wait for the button to be clickable
+    button = WebDriverWait(browser, 10).until(
+        EC.element_to_be_clickable((By.CSS_SELECTOR, "button.chakra-button.css-1rwzulq[qa-id='btn-go-to-project']"))
+    )
+    # Click the button
+    button.click()
+    print("Clicked on the 'Go to Internet Facing Project' button.")    
         
 #    prioritize_button = WebDriverWait(browser, 10).until(
 #        EC.element_to_be_clickable((By.CSS_SELECTOR, "button[qa-id='project-d3382591-c70c-47af-887e-a47ce87f2bf3-prioritize-btn']"))
